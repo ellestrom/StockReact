@@ -4,22 +4,21 @@ const MyComponent = () => {
   const [stockData, setStockData] = useState([]);
 
   useEffect(() => {
-    const apiKey = 'Y5ETTQWD6X3IQ9OJ.'; // Replace with your Alpha Vantage API key
-    const symbol = 'MSFT'; // Replace with the desired stock symbol
+    const apiKey = 'chq7vd9r01qt7cgvtqf0chq7vd9r01qt7cgvtqfg'; // Replace with your Finnhub API key
+    const symbol = 'AAPL'; // Replace with the desired stock symbol
 
-    // Fetch stock data from the Alpha Vantage API
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`)
+    // Fetch stock data from the Finnhub API
+    fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
       .then(response => response.json())
       .then(data => {
-        const timeSeries = data['Time Series (Daily)'];
-        const formattedData = Object.keys(timeSeries).map(date => ({
-          date,
-          open: parseFloat(timeSeries[date]['1. open']),
-          high: parseFloat(timeSeries[date]['2. high']),
-          low: parseFloat(timeSeries[date]['3. low']),
-          close: parseFloat(timeSeries[date]['4. close']),
-          volume: parseInt(timeSeries[date]['5. volume'])
-        }));
+        const formattedData = [{
+          date: new Date().toLocaleDateString(),
+          open: parseFloat(data.o),
+          high: parseFloat(data.h),
+          low: parseFloat(data.l),
+          close: parseFloat(data.c),
+          volume: parseInt(data.v)
+        }];
         setStockData(formattedData);
       })
       .catch(error => console.log(error));
