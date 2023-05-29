@@ -20,13 +20,12 @@ const Stock = () => {
     });
   };
 
-  const deleteStock = (stock) => {
-    setSavedStocks((prevSavedStocks) => {
-      const updatedStocks = prevSavedStocks.filter((item) => item.date !== stock.date);
-      localStorage.setItem('savedStocks', JSON.stringify(updatedStocks));
+  const deleteStock = (stockToDelete) => {
+    setStocks((prevStocks) => {
+      const updatedStocks = prevStocks.filter((stock) => stock !== stockToDelete);
       return updatedStocks;
     });
-  };  
+  };    
 
   useEffect(() => {
     const savedStocksData = localStorage.getItem('savedStocks');
@@ -66,10 +65,14 @@ const Stock = () => {
     <div className="stock-container">
       <h1>Stock Data:</h1>
       <StockForm onStockAdd={handleStockAdd} />
-      <StockList stocks={stocks} onSaveStock={saveStock} />
+      <StockList
+        stocks={stocks}
+        onSaveStock={saveStock}
+        onDeleteStock={deleteStock} // Add onDeleteStock prop
+      />
       <SavedStocks stocks={savedStocks} />
     </div>
-  );
+  );  
 };
 
 export default Stock;
