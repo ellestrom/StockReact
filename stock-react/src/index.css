@@ -1,5 +1,20 @@
 body {
+  background-image: url("../public/imgs/blacklf.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   text-align: center;
+}
+
+.stock-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 80%;
+  margin: 0 auto;
+  min-height: 600px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 table {
@@ -14,4 +29,15 @@ th, td {
   padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 40px;
+}
+
+@media (max-width: 1200px) {
+  .stock-container {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+
+  .stock-container table th,
+  .stock-container table td {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
 }
