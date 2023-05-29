@@ -20,6 +20,14 @@ const Stock = () => {
     });
   };
 
+  const deleteStock = (stock) => {
+    setSavedStocks((prevSavedStocks) => {
+      const updatedStocks = prevSavedStocks.filter((item) => item.date !== stock.date);
+      localStorage.setItem('savedStocks', JSON.stringify(updatedStocks));
+      return updatedStocks;
+    });
+  };  
+
   useEffect(() => {
     const savedStocksData = localStorage.getItem('savedStocks');
     if (savedStocksData) {

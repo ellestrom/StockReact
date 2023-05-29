@@ -1,9 +1,13 @@
 import React from 'react';
 import StockItem from './StockItem';
 
-const StockList = ({ stocks, onSaveStock }) => {
+const StockList = ({ stocks, onSaveStock, onDeleteStock }) => {
   const handleSaveStock = (stock) => {
     onSaveStock(stock);
+  };
+
+  const handleDeleteStock = (stock) => {
+    onDeleteStock(stock);
   };
 
   return (
@@ -25,7 +29,8 @@ const StockList = ({ stocks, onSaveStock }) => {
             <StockItem
               key={item.date}
               stock={item}
-              onSaveStock={handleSaveStock} // Change prop name to onSaveStock
+              onSaveStock={handleSaveStock}
+              onDeleteStock={handleDeleteStock} // Add onDeleteStock prop
             />
           ))}
         </tbody>
@@ -35,4 +40,5 @@ const StockList = ({ stocks, onSaveStock }) => {
 };
 
 export default StockList;
+
 
