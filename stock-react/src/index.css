@@ -24,11 +24,18 @@ table {
   font-size: 35px;
 }
 
-th, td {
+td {
   padding-top: 10px;
   padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 40px;
+  
+}
+
+th {
+  border: 2px solid black;
+  padding: 1%;
+  background-color: lightgrey;
 }
 
 @media (max-width: 1200px) {
