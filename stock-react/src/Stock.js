@@ -25,7 +25,15 @@ const Stock = () => {
       const updatedStocks = prevStocks.filter((stock) => stock !== stockToDelete);
       return updatedStocks;
     });
-  };    
+  };
+
+  const deleteSavedStock = (stockToDelete) => {
+    setSavedStocks((prevSavedStocks) => {
+      const updatedStocks = prevSavedStocks.filter((stock) => stock !== stockToDelete);
+      localStorage.setItem('savedStocks', JSON.stringify(updatedStocks));
+      return updatedStocks;
+    });
+  };
 
   useEffect(() => {
     const savedStocksData = localStorage.getItem('savedStocks');
@@ -39,8 +47,8 @@ const Stock = () => {
 
     // Fetch stock data from the Finnhub API
     fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (!data.error) {
           const formattedData = {
             date: new Date().toLocaleDateString(),
@@ -48,12 +56,12 @@ const Stock = () => {
             high: parseFloat(data.h),
             low: parseFloat(data.l),
             close: parseFloat(data.c),
-            ticker: symbol
+            ticker: symbol,
           };
-          setStocks(prevStocks => [...prevStocks, formattedData]);
+          setStocks((prevStocks) => [...prevStocks, formattedData]);
         }
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -63,16 +71,12 @@ const Stock = () => {
 
   return (
     <div className="stock-container">
-      <h1>Stock Data:</h1>
+      <h1>My Stock Screen</h1>
       <StockForm onStockAdd={handleStockAdd} />
-      <StockList
-        stocks={stocks}
-        onSaveStock={saveStock}
-        onDeleteStock={deleteStock} // Add onDeleteStock prop
-      />
-      <SavedStocks stocks={savedStocks} />
+      <StockList stocks={stocks} onSaveStock={saveStock} onDeleteStock={deleteStock} />
+      <SavedStocks stocks={savedStocks} onDeleteStock={deleteSavedStock} />
     </div>
-  );  
+  );
 };
 
 export default Stock;
