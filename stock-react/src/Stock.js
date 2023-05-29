@@ -64,7 +64,7 @@ const Stock = () => {
 
   return (
     <div className="stock-container">
-      <h1>Stock Data:</h1>
+      <h1>My Stock Screen </h1>
       <StockForm onStockAdd={handleStockAdd} />
       <StockList stocks={stocks} onSaveStock={saveStock} />
       <SavedStocks stocks={savedStocks} />
