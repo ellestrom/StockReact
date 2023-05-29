@@ -5,7 +5,7 @@ const MyComponent = () => {
   const [symbol, setSymbol] = useState('');
 
   const handleSymbolChange = (event) => {
-    setSymbol(event.target.value);
+    setSymbol(event.target.value.toUpperCase());
   };
 
   const handleSubmit = (event) => {
@@ -34,7 +34,7 @@ const MyComponent = () => {
             high: parseFloat(data.h),
             low: parseFloat(data.l),
             close: parseFloat(data.c),
-            volume: parseInt(data.v)
+            ticker: symbol
           }];
           setStockData(formattedData);
         }
@@ -67,21 +67,20 @@ const MyComponent = () => {
             <th>High</th>
             <th>Low</th>
             <th>Close</th>
-            <th>Volume</th>
+            <th>Ticker</th>
           </tr>
         </thead>
         <tbody>
-        {stockData.map(item => (
-  <tr key={item.date}>
-    <td>{item.date}</td>
-    <td>{item.open.toFixed(2)}</td>
-    <td>{item.high.toFixed(2)}</td>
-    <td>{item.low.toFixed(2)}</td>
-    <td>{item.close.toFixed(2)}</td>
-    <td>{item.volume.toFixed(2)}</td>
-  </tr>
-))}
-
+          {stockData.map(item => (
+            <tr key={item.date}>
+              <td>{item.date}</td>
+              <td>{item.open.toFixed(2)}</td>
+              <td>{item.high.toFixed(2)}</td>
+              <td>{item.low.toFixed(2)}</td>
+              <td>{item.close.toFixed(2)}</td>
+              <td>{item.ticker}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
