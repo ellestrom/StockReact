@@ -17,14 +17,14 @@ const StockForm = ({ onStockAdd }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="symbolInput">Enter Stock Symbol:</label>
+      <label htmlFor="symbolInput">Enter Stock Ticker:</label>
       <input
         type="text"
         id="symbolInput"
         value={symbol}
         onChange={handleSymbolChange}
       />
-      <button type="submit">Add Stock</button>
+      <button type="submit">Search</button>
     </form>
   );
 };
