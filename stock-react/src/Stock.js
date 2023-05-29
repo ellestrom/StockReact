@@ -20,12 +20,12 @@ const Stock = () => {
     });
   };
 
-  const deleteStock = (stock) => {
+  const deleteStock = (stockToDelete) => {
     setStocks((prevStocks) => {
-      const updatedStocks = prevStocks.filter((item) => item.date !== stock.date);
+      const updatedStocks = prevStocks.filter((stock) => stock !== stockToDelete);
       return updatedStocks;
     });
-  };  
+  };    
 
   useEffect(() => {
     const savedStocksData = localStorage.getItem('savedStocks');

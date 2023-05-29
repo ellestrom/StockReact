@@ -1,13 +1,13 @@
 import React from 'react';
 
-const StockItem = ({ stock, onSaveStock, onDeleteStock }) => {
+    const StockItem = ({ stock, onSaveStock, onDeleteStock }) => {
     const handleSaveStock = () => {
       onSaveStock(stock);
     };
   
     const handleDeleteStock = () => {
-      onDeleteStock(stock);
-    };
+        onDeleteStock(stock);
+      };
   
     return (
       <tr>

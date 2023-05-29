@@ -7,8 +7,8 @@ const StockList = ({ stocks, onSaveStock, onDeleteStock }) => {
     };
   
     const handleDeleteStock = (stock) => {
-      onDeleteStock(stock);
-    };
+        onDeleteStock(stock);
+      };           
   
     return (
       <div>
@@ -25,13 +25,13 @@ const StockList = ({ stocks, onSaveStock, onDeleteStock }) => {
             </tr>
           </thead>
           <tbody>
-            {stocks.map((item) => (
-              <StockItem
+          {stocks.map((item) => (
+            <StockItem
                 key={item.date}
                 stock={item}
                 onSaveStock={handleSaveStock}
-                onDeleteStock={handleDeleteStock} // Pass the handleDeleteStock function
-              />
+                onDeleteStock={handleDeleteStock}
+            />
             ))}
           </tbody>
         </table>
