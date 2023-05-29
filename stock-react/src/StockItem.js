@@ -1,6 +1,10 @@
 import React from 'react';
 
-const StockItem = ({ stock }) => {
+const StockItem = ({ stock, onSaveStock }) => {
+  const handleSaveStock = () => {
+    onSaveStock(stock);
+  };
+
   return (
     <tr>
       <td>{stock.date}</td>
@@ -9,6 +13,9 @@ const StockItem = ({ stock }) => {
       <td>{stock.low.toFixed(2)}</td>
       <td>{stock.close.toFixed(2)}</td>
       <td>{stock.ticker}</td>
+      <td>
+        <button onClick={handleSaveStock}>Save</button>
+      </td>
     </tr>
   );
 };
