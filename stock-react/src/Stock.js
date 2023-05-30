@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import StockForm from './StockForm';
 import StockList from './StockList';
 import SavedStocks from './SavedStocks';
+import StockAlert from './StockAlert';
 import './index.css';
 
 const Stock = () => {
   const [stocks, setStocks] = useState([]);
   const [savedStocks, setSavedStocks] = useState([]);
+  const [fetchedSymbols, setFetchedSymbols] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleStockAdd = (symbol) => {
-    fetchStockData(symbol);
+    if (!fetchedSymbols.includes(symbol)) {
+      fetchStockData(symbol);
+    } else {
+      setShowAlert(true);
+    }
   };
 
   const saveStock = (stock) => {
@@ -42,6 +49,15 @@ const Stock = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (showAlert) {
+      const timeout = setTimeout(() => {
+        setShowAlert(false);
+      }, 3000); // Set the duration for the alert to be displayed (in milliseconds)
+      return () => clearTimeout(timeout);
+    }
+  }, [showAlert]);
+
   const fetchStockData = (symbol) => {
     const apiKey = 'chq7vd9r01qt7cgvtqf0chq7vd9r01qt7cgvtqfg'; // Replace with your Finnhub API key
 
@@ -56,9 +72,10 @@ const Stock = () => {
             high: parseFloat(data.h),
             low: parseFloat(data.l),
             close: parseFloat(data.c),
-            ticker: symbol,
+            ticker: symbol.toUpperCase(),
           };
           setStocks((prevStocks) => [...prevStocks, formattedData]);
+          setFetchedSymbols((prevSymbols) => [...prevSymbols, symbol]);
         }
       })
       .catch((error) => console.log(error));
@@ -72,11 +89,13 @@ const Stock = () => {
   return (
     <div className="stock-container">
       <h1>My Stock Screen</h1>
+      {showAlert && <StockAlert />}
       <StockForm onStockAdd={handleStockAdd} />
       <StockList stocks={stocks} onSaveStock={saveStock} onDeleteStock={deleteStock} />
       <SavedStocks stocks={savedStocks} onDeleteStock={deleteSavedStock} />
-    </div>
-  );
-};
-
-export default Stock;
+      </div>
+    );
+  };
+  
+  export default Stock;
+  
