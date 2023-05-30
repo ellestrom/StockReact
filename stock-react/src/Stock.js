@@ -34,6 +34,18 @@ const Stock = () => {
     });
   };
 
+  useEffect(() => {
+    const savedStocksData = localStorage.getItem('savedStocks');
+    if (savedStocksData) {
+      const parsedStocks = JSON.parse(savedStocksData);
+      const updatedStocks = parsedStocks.map((stock) => {
+        const currentDate = new Date().toLocaleDateString();
+        return { ...stock, date: currentDate };
+      });
+      setSavedStocks(updatedStocks);
+    }
+  }, []);
+
   const deleteSavedStock = (stockToDelete) => {
     setSavedStocks((prevSavedStocks) => {
       const updatedStocks = prevSavedStocks.filter((stock) => stock !== stockToDelete);
