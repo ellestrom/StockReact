@@ -15,13 +15,35 @@ body {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 table {
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 1%;
   font-size: 35px;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
 }
 
 td {
