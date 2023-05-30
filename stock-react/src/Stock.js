@@ -20,12 +20,18 @@ const Stock = () => {
   };
 
   const saveStock = (stock) => {
-    setSavedStocks((prevSavedStocks) => {
-      const updatedStocks = [...prevSavedStocks, stock];
-      localStorage.setItem('savedStocks', JSON.stringify(updatedStocks));
-      return updatedStocks;
-    });
-  };
+    const isStockSaved = savedStocks.some((savedStock) => savedStock.ticker === stock.ticker);
+  
+    if (!isStockSaved) {
+      setSavedStocks((prevSavedStocks) => {
+        const updatedStocks = [...prevSavedStocks, stock];
+        localStorage.setItem('savedStocks', JSON.stringify(updatedStocks));
+        return updatedStocks;
+      });
+    } else {
+      window.alert('Stock already saved');
+    }
+  };  
 
   const deleteStock = (stockToDelete) => {
     setStocks((prevStocks) => {
@@ -110,4 +116,3 @@ const Stock = () => {
   };
   
   export default Stock;
-  
