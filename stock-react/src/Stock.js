@@ -12,12 +12,31 @@ const Stock = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleStockAdd = (symbol) => {
-    if (!fetchedSymbols.includes(symbol)) {
-      fetchStockData(symbol);
-    } else {
+    const isStockExisting = fetchedSymbols.includes(symbol);
+  
+    if (isStockExisting) {
       setShowAlert(true);
+    } else {
+      validateStockSymbol(symbol);
     }
   };
+  
+  const validateStockSymbol = (symbol) => {
+    const apiKey = 'chq7vd9r01qt7cgvtqf0chq7vd9r01qt7cgvtqfg';
+    const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
+  
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error || !data.t) {
+          alert(`Stock with symbol ${symbol} does not exist. Please try again.`);
+        } else {
+          fetchStockData(symbol);
+          setFetchedSymbols((prevSymbols) => [...prevSymbols, symbol]);
+        }
+      })
+      .catch((error) => console.log(error));
+  };    
 
   const saveStock = (stock) => {
     const isStockSaved = savedStocks.some((savedStock) => savedStock.ticker === stock.ticker);
