@@ -27,6 +27,7 @@ table {
   font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%; /* Add this line */
 }
 
 tbody tr {
@@ -51,7 +52,6 @@ td {
   padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 40px;
-  
 }
 
 th {
@@ -74,3 +74,43 @@ th {
     font-size: 14px; /* Adjust the font size as needed */
   }
 }
+
+button {
+  width: 80px;
+  height: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: #171717;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: all .4s;
+  margin: 5px;
+  margin-top: 10px;
+ }
+ 
+ button:hover {
+  border-radius: 5px;
+  transform: translateY(-10px);
+  box-shadow: 0 7px 0 -2px #f85959,
+   0 15px 0 -4px #39a2db,
+   0 16px 10px -3px #39a2db;
+ }
+ 
+ button:active {
+  transition: all 0.2s;
+  transform: translateY(-5px);
+  box-shadow: 0 2px 0 -2px #f85959,
+   0 8px 0 -4px #39a2db,
+   0 12px 10px -3px #39a2db;
+ }
+
+ h5 {
+  margin-bottom: 4px;
+  font-size: 18px;
+ }
+
+ h1 {
+  margin-bottom: 2px;
+  margin-top: 2px;
+ }

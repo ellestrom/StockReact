@@ -7,7 +7,7 @@ const SavedStocks = ({ stocks, onDeleteStock }) => {
 
   return (
     <div className="saved-stocks-container">
-      <h2>My Saved Stocks:</h2>
+      <h2>My Stocks</h2>
       <table>
         <thead>
           <tr>

@@ -120,12 +120,14 @@ const Stock = () => {
 
   useEffect(() => {
     // Initial fetch for default stock
-    fetchStockData('AAPL');
+    fetchStockData('GOOG');
+    fetchStockData('TSLA');
+    fetchStockData('NVDA');
   }, []);
 
   return (
     <div className="stock-container">
-      <h1>My Stock Screen</h1>
+      <h1>Stockify</h1>
       {showAlert && <StockAlert />}
       <StockForm onStockAdd={handleStockAdd} />
       <StockList stocks={stocks} onSaveStock={saveStock} onDeleteStock={deleteStock} />
