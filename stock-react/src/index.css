@@ -22,7 +22,7 @@ table {
   margin-top: 1%;
   font-size: 35px;
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 25px;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
@@ -64,16 +64,6 @@ th {
   padding-right: 40px;
 }
 
-@media (max-width: 1200px) {
-  .stock-container {
-    font-size: 14px; /* Adjust the font size as needed */
-  }
-
-  .stock-container table th,
-  .stock-container table td {
-    font-size: 14px; /* Adjust the font size as needed */
-  }
-}
 
 button {
   width: 80px;
@@ -114,3 +104,58 @@ button {
   margin-bottom: 2px;
   margin-top: 2px;
  }
+
+ @media (max-width: 1200px) {
+  .stock-container {
+    font-size: 16px;
+  }
+  
+  .stock-container table {
+    font-size: 1.3em;
+    min-width: 300px;
+    width: 90%;
+  }
+  
+  .stock-container table th,
+  .stock-container table td {
+    padding: 8px;
+  }
+
+  
+}
+
+@media (max-width: 900px) {
+  .stock-container {
+    font-size: 14px;
+  }
+  
+  .stock-container table {
+    font-size: 1.2em;
+    min-width: 250px;
+    width: 90%;
+  }
+  
+  .stock-container table th,
+  .stock-container table td {
+    padding: 6px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .stock-container {
+    font-size: 12px;
+  }
+  
+  .stock-container table {
+    font-size: 1.1em;
+    min-width: 200px;
+    width: 90%;
+  }
+  
+  .stock-container table th,
+  .stock-container table td {
+    padding: 4px;
+  }
+
+}
