@@ -1,11 +1,3 @@
-// File: Stock.js
-// Description: React component for managing stock functionality in a stock screen application.
-// Author: Simon, Alexander and Sarkis
-// Date: 2023/05/30
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import StockForm from './StockForm';
 import StockList from './StockList';

@@ -5,6 +5,7 @@ import MyComponent from './Stock';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Render the MyComponent component */}
     <MyComponent />
   </React.StrictMode>,
   document.getElementById('root')
