@@ -22,7 +22,8 @@ table {
   margin-top: 1%;
   font-size: 35px;
   border-collapse: collapse;
-  margin: 25px;
+  margin: auto;
+  margin-top: 15px;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
@@ -142,20 +143,23 @@ button {
 
 }
 
-@media (max-width: 600px) {
-  .stock-container {
-    font-size: 12px;
-  }
-  
+@media screen and (max-width: 760px) {
+
   .stock-container table {
-    font-size: 1.1em;
-    min-width: 200px;
-    width: 90%;
-  }
-  
-  .stock-container table th,
-  .stock-container table td {
-    padding: 4px;
+    font-size: 0.9em;
   }
 
+
+  table thead {
+    display: block;
+  }
+  table td {
+    display: block;
+  }
+  
+  table td::before {
+    font-weight: bold;
+    width: 120px;
+    min-width: 120px;
+  }
 }
